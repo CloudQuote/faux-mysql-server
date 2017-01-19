@@ -1,8 +1,6 @@
 # faux-mysql-server
 A library which implements the MySQL server protocol, giving you the ability to create MySQL-like services
 
-Server-side implementation of the MySQL network protocol
-
 ## Synopsis
 
 This is a server-side implementation of the MySQL network protocol
@@ -17,3 +15,6 @@ This module was written by Mark Dierolf <mdierolf@cloudquote.net>, as a port of 
 
 The original [DBIx::MyServer](https://metacpan.org/pod/DBIx::MyServer) module was written by Philip Stoev <philip@stoev.org>
 
+## License
+
+GPL
