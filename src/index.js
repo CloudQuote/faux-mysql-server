@@ -1,4 +1,3 @@
-
 import * as consts from './constants';
 import crypto from 'crypto';
 
@@ -15,8 +14,9 @@ export default class Server {
   this.socket.on('data', this.handleData);
   this.socket.on('end', this.handleDisconnect);
   
-  this.sendServerHello()
+  this.sendServerHello();
  }
+
  handleDisconnect = () => {
   console.log("disconnect");
  };
