@@ -13,7 +13,7 @@ This module emulates the server side of the MySQL protocol. This allows you to r
 
 See example.js for an example server which repeats the commands back to you that you send
 
-```
+```javascript
 import net from 'net';
 import FMS from 'faux-mysql';
 import * as consts from 'faux-mysql/constants';
