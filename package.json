@@ -20,6 +20,6 @@
     "type": "git",
     "url": "git://github.com/CloudQuote/faux-mysql-server.git"
   },
-  "author": "mdierolf",
-  "license": ""
+  "author": "CloudQuote",
+  "license": "gpl-3.0"
 }
