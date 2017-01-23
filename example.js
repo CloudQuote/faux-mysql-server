@@ -1,6 +1,5 @@
 import net from 'net';
-import FMS from './src';
-import * as consts from './src/constants';
+import FMS, {consts} from './src';
 
 net.createServer((so) => {
  let server = new FMS({

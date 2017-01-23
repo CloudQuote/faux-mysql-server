@@ -1,6 +1,8 @@
 import * as consts from './constants';
 import crypto from 'crypto';
 
+export * as consts from './constants';
+
 export default class Server {
  constructor(opts) {
   Object.assign(this,opts);
