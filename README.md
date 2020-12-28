@@ -49,7 +49,7 @@ function handleCommand({command, extra}) {
   case undefined:
   case consts.COM_QUIT:
    console.log("Disconnecting");
-   this.disconnect();
+   this.end();
    break;
   default:
    console.log("Unknown Command: " + command);

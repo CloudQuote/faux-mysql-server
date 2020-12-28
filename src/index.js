@@ -13,13 +13,13 @@ export default class Server {
   this.incoming = [];
   
   this.socket.on('data', this.handleData);
-  this.socket.on('end', this.handleDisconnect);
+  if (this.handleDisconnect) this.socket.on('end', this.handleDisconnect);
   
   this.sendServerHello();
  }
-
- handleDisconnect = () => {
-  console.log("disconnect");
+ 
+ end = () => {
+  this.socket.end();
  };
 
  writeHeader(data,len) {
