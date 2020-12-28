@@ -1,5 +1,5 @@
 import net from 'net';
-import FMS, {consts} from './src';
+import FMS, {consts} from './src/index.js';
 
 net.createServer((so) => {
  let server = new FMS({

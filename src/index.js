@@ -1,8 +1,7 @@
-import * as consts from './constants';
+import * as consts from './constants.js';
 import crypto from 'crypto';
 
-export * as consts from './constants';
-
+export * as consts from './constants.js';
 export default class Server {
  constructor(opts) {
   Object.assign(this,opts);
@@ -187,7 +186,9 @@ export default class Server {
    let packetLength = data.readUIntLE(0,3);
    if (data.length < packetLength + 4) return data;
 
-   this.sequence = data.readUIntLE(3) + 1;
+   //console.log({ data, offset });
+   
+   this.sequence = data.readUIntLE(0,1) + 1;
    offset += packetLength + 4;
    let packet = data.slice(4,packetLength + 4);
    
@@ -235,7 +236,7 @@ export default class Server {
 
   let databaseEnd = packet.indexOf(0,ptr);
   if (databaseEnd >= 0) {
-   database = data.toString('ascii',ptr,databaseEnd);
+   database = packet.toString('ascii',ptr,databaseEnd);
   }
   this.onPacket = null;
     

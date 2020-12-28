@@ -4,22 +4,16 @@
   "version": "0.1.0",
   "description": "A library which implements the MySQL server protocol, giving you the ability to create MySQL-like services",
   "keywords": [ "mysql" ],
-  "dependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-es2015-minimal": "^2.1.0",
-    "babel-preset-stage-0": "^6.16.0"
-  },
-  "main": "lib/index.js",
-  "scripts": {
-    "compile": "babel src -d lib",
-    "prepublish": "npm run compile"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/CloudQuote/faux-mysql-server.git"
   },
   "author": "CloudQuote",
-  "license": "gpl-3.0"
+  "license": "gpl-3.0",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  }
+
 }
