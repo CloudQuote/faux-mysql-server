@@ -44,7 +44,7 @@ function handleCommand({command, extra}) {
 function handleQuery(query) {
  // Take the query, print it out
  console.log("Got Query: " + query);
- 
+
  // Then send it back to the user in table format
  this.sendDefinitions([this.newDefinition({ name: 'TheCommandYouSent'})]);
  this.sendRows([
