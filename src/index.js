@@ -188,7 +188,7 @@ export default class Server {
 
    //console.log({ data, offset });
    
-   this.sequence = data.readUIntLE(0,1) + 1;
+   this.sequence = data.readUIntLE(3,1) + 1;
    offset += packetLength + 4;
    let packet = data.slice(4,packetLength + 4);
    
