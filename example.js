@@ -1,16 +1,19 @@
 import net from 'net';
 import FMS, {consts} from './src/index.js';
 
+const port = 3344;
+const banner = "Fake Mysql/1.0";
+
 net.createServer((so) => {
  let server = new FMS({
   socket: so,
-  banner: "Fake Mysql/1.0",
+  banner: banner,
   onAuthorize: handleAuthorize,
   onCommand: handleCommand
  });
-}).listen(3306);
+}).listen(port);
 
-console.log("Started server on port 3306");
+console.log(`Started ${banner} on port ${port}`);
 
 function handleAuthorize(param) {
  console.log("Auth Info:");
