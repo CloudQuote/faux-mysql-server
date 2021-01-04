@@ -56,22 +56,24 @@ export default class Server {
   this.sendPacket(payload.slice(0,len));
 
   // Write each definition
-  len = 4;
   for (let definition of definitions) {
+   len = 4;
    for (let field of [ 'catalog','schema','table','orgTable','name','orgName' ]) {
     let val = definition[field] || "";
     len = writeLengthCodedString(payload,len,val);
    }
    len = payload.writeUInt8(0x0C, len);
    len = payload.writeUInt16LE(11, len); // ASCII
-   len = payload.writeUInt32LE(definition.columnLength, len);
-   len = payload.writeUInt8(definition.columnType, len);
-   len = payload.writeUInt16LE(definition.flags ? definition.flags : 0, len);
-   len = payload.writeUInt8(definition.decimals ? definition.decimals : 0, len);
+   len = payload.writeUInt32LE(definition.columnLength || 0, len);
+   len = payload.writeUInt8(definition.columnType != null ? definition.columnType : consts.MYSQL_TYPE_VAR_STRING , len);
+   len = payload.writeUInt16LE(definition.flags != null ? definition.flags : 0, len);
+   len = payload.writeUInt8(definition.decimals != null ? definition.decimals : 0, len);
    len = payload.writeUInt16LE(0,len); // \0\0 FILLER
    len = writeLengthCodedString(payload,len,definition['default']);
    this.writeHeader(payload,len); 
    this.sendPacket(payload.slice(0,len));
+   //console.log(definition);
+   //console.log(payload.slice(4,len));
   }
   
   this.sendEOF();
@@ -81,7 +83,7 @@ export default class Server {
   let payload = Buffer.alloc(1024);
   let len = 4;
   for (let cell of row) {
-   if (cell == null) {
+   if (cell == null) {4
     len = payload.writeUInt8(0xFB,len);
    } else {
     len = writeLengthCodedString(payload,len,cell);

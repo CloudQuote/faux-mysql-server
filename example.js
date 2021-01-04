@@ -46,9 +46,13 @@ function handleQuery(query) {
  console.log("Got Query: " + query);
  
  // Then send it back to the user in table format
- this.sendDefinitions([this.newDefinition({ name: 'TheCommandYouSent'})]);
+ this.sendDefinitions([
+  this.newDefinition({ name: 'TheCommandYouSent', columnType: consts.MYSQL_TYPE_VAR_STRING }),
+  this.newDefinition({ name: "foo", columnType: consts.MYSQL_TYPE_VAR_STRING }),
+  this.newDefinition({ name: "A Number", columnType: consts.MYSQL_TYPE_LONG }),
+ ]);
  this.sendRows([
-  [query]
+  [query,"bar", 123456789]
  ]);
 }
 
