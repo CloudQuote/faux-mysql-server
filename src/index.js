@@ -83,7 +83,7 @@ export default class Server {
   let payload = Buffer.alloc(1024);
   let len = 4;
   for (let cell of row) {
-   if (cell == null) {4
+   if (cell == null) {
     len = payload.writeUInt8(0xFB,len);
    } else {
     len = writeLengthCodedString(payload,len,cell);
